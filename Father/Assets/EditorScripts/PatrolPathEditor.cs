@@ -134,7 +134,7 @@ public class PatrolPathEditor : EditorWindow
             EnemyBehaviour enemyBehaviour = newEnemy.GetComponent<EnemyBehaviour>();
             if (enemyBehaviour != null && existingPatrolPaths.Count > 0)
             {
-                enemyBehaviour.patrolPath = existingPatrolPaths[selectedPathIndex];
+                //enemyBehaviour.patrolPath = existingPatrolPaths[selectedPathIndex];
             }
         }
         else

@@ -196,6 +196,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (patrolPoints == null || patrolPoints.Length == 0)
             return;
 
+        Debug.Log("Gehe zu PatrolPoint: " + patrolPoints[currentPatrolIndex].name);
         agent.destination = patrolPoints[currentPatrolIndex].position;
         currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
         animator.SetBool("isWalking", true);

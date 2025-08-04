@@ -24,10 +24,13 @@ public class WorldNote : MonoBehaviour
 
         if (player != null)
         {
-            float distance = Vector3.Distance(transform.position, player.position);
+            // Augenhöhe des Spielers (ggf. anpassen)
+            Vector3 playerEyePos = player.position + Vector3.up * 0.91f;
+
+            float distance = Vector3.Distance(transform.position, playerEyePos);
             if (distance <= viewRadius)
             {
-                Vector3 toNote = (transform.position - player.position).normalized;
+                Vector3 toNote = (transform.position - playerEyePos).normalized;
                 Vector3 playerForward = player.forward;
 
                 float angle = Vector3.Angle(playerForward, toNote);

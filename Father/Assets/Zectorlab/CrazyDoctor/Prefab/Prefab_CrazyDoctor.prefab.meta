@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: eb726c286a890984395432cd20db242b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 206789
+  packageName: Crazy Doctor
+  packageVersion: 1.1
+  assetPath: Assets/Zectorlab/CrazyDoctor/Prefab/Prefab_CrazyDoctor.prefab
+  uploadId: 688340

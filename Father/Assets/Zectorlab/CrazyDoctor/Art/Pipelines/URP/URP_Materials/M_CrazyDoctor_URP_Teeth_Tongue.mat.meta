@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7f887b611fb40564fae68551ba7dfae9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 206789
+  packageName: Crazy Doctor
+  packageVersion: 1.1
+  assetPath: Assets/Zectorlab/CrazyDoctor/Art/Pipelines/URP/URP_Materials/M_CrazyDoctor_URP_Teeth_Tongue.mat
+  uploadId: 688340

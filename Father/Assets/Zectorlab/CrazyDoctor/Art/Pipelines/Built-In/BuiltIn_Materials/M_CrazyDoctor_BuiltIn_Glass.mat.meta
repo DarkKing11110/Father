@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e5559b2786f5b5e46bb281fe174e8644
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 206789
+  packageName: Crazy Doctor
+  packageVersion: 1.1
+  assetPath: Assets/Zectorlab/CrazyDoctor/Art/Pipelines/Built-In/BuiltIn_Materials/M_CrazyDoctor_BuiltIn_Glass.mat
+  uploadId: 688340

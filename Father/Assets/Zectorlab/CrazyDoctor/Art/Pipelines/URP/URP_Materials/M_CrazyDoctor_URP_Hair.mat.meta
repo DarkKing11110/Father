@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a1d3273ffb1356b458e57bc7f2261d56
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 206789
+  packageName: Crazy Doctor
+  packageVersion: 1.1
+  assetPath: Assets/Zectorlab/CrazyDoctor/Art/Pipelines/URP/URP_Materials/M_CrazyDoctor_URP_Hair.mat
+  uploadId: 688340

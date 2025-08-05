@@ -26,7 +26,8 @@ public class PlayerBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         // Sperrt die Rotation um die X- und Z-Achse, um das Umkippen zu verhindern
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+
 
         // Mauszeiger verstecken und zentrieren
         Cursor.lockState = CursorLockMode.Locked;

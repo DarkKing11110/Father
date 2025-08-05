@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6761e43f0f2138f408959015ef8aff09
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 206789
+  packageName: Crazy Doctor
+  packageVersion: 1.1
+  assetPath: Assets/Zectorlab/CrazyDoctor/Art/Pipelines/HDRP/HDRP_Materials/M_CrazyDoctor_HDRP_Wristband.mat
+  uploadId: 688340

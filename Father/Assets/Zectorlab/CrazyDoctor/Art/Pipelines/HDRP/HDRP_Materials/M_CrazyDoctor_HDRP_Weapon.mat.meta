@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c25f9433a8cdc1e459049f77b3be259d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 206789
+  packageName: Crazy Doctor
+  packageVersion: 1.1
+  assetPath: Assets/Zectorlab/CrazyDoctor/Art/Pipelines/HDRP/HDRP_Materials/M_CrazyDoctor_HDRP_Weapon.mat
+  uploadId: 688340

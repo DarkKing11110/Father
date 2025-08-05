@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8441ec6ed49ad344981c00ef9ab818de
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 206789
+  packageName: Crazy Doctor
+  packageVersion: 1.1
+  assetPath: Assets/Zectorlab/CrazyDoctor/Art/Pipelines/URP/URP_Materials/M_CrazyDoctor_URP_HeadTools.mat
+  uploadId: 688340

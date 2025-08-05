@@ -296,9 +296,29 @@ public class EnemyBehaviour : MonoBehaviour
         if (patrolRoutes == null || patrolRoutes.Count == 0)
             return;
 
-        currentPatrolRoute = patrolRoutes[Random.Range(0, patrolRoutes.Count)];
+        // Wenn es nur eine Route gibt, einfach diese nehmen
+        if (patrolRoutes.Count == 1)
+        {
+            currentPatrolRoute = patrolRoutes[0];
+        }
+        else
+        {
+            // Wähle eine andere Route als die aktuelle
+            int currentIndex = patrolRoutes.IndexOf(currentPatrolRoute);
+            int newIndex = currentIndex;
+            int safety = 0; // Schutz vor Endlosschleife
+
+            while (newIndex == currentIndex && safety < 10)
+            {
+                newIndex = Random.Range(0, patrolRoutes.Count);
+                safety++;
+            }
+            currentPatrolRoute = patrolRoutes[newIndex];
+        }
+
         patrolPoints = currentPatrolRoute.patrolPoints.ToArray();
         currentPatrolIndex = 0;
         GoToNextPatrolPoint();
     }
+
 }

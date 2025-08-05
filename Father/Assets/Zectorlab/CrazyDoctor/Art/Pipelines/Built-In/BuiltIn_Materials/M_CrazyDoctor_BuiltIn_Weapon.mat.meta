@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cfd6099d88e41f545b79203085c8fd4c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 206789
+  packageName: Crazy Doctor
+  packageVersion: 1.1
+  assetPath: Assets/Zectorlab/CrazyDoctor/Art/Pipelines/Built-In/BuiltIn_Materials/M_CrazyDoctor_BuiltIn_Weapon.mat
+  uploadId: 688340

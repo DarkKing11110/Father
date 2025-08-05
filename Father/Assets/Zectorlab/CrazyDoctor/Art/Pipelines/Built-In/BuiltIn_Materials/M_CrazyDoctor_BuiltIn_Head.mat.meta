@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 606c38c6f36f25045bcac770a10342dc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 206789
+  packageName: Crazy Doctor
+  packageVersion: 1.1
+  assetPath: Assets/Zectorlab/CrazyDoctor/Art/Pipelines/Built-In/BuiltIn_Materials/M_CrazyDoctor_BuiltIn_Head.mat
+  uploadId: 688340

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1d6862e42263a9349b22428433f024c3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 206789
+  packageName: Crazy Doctor
+  packageVersion: 1.1
+  assetPath: Assets/Zectorlab/CrazyDoctor/Art/Pipelines/HDRP/HDRP_Materials/M_CrazyDoctor_HDRP_JacketVariant.mat
+  uploadId: 688340

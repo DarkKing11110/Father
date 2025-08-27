@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Unity.AI.Navigation;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Art_Equilibrium
 {
@@ -33,6 +35,9 @@ namespace Art_Equilibrium
         public AudioClip closeSound;
         private AudioSource audioSource;
 
+        [Header("NavMesh Link")]
+        public NavMeshLink navMeshLink;
+
         private void Start()
         {
             defaultRot = transform.rotation;
@@ -62,6 +67,10 @@ namespace Art_Equilibrium
                 open = !open;
                 isKeyPressed = true;
                 PlayDoorSound();
+
+                // NavMeshLink aktivieren/deaktivieren
+                if (navMeshLink != null)
+                    navMeshLink.gameObject.SetActive(open);
             }
 
             if (Input.GetKeyUp(KeyCode.E))

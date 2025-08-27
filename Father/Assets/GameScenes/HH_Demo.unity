@@ -171167,6 +171167,10 @@ PrefabInstance:
       value: note
       objectReference: {fileID: 0}
     - target: {fileID: 4104765232777464352, guid: 0e6609a8862b765438e782bb43519695, type: 3}
+      propertyPath: noteText
+      value: Your not Safe here!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104765232777464352, guid: 0e6609a8862b765438e782bb43519695, type: 3}
       propertyPath: viewRadius
       value: 1.12
       objectReference: {fileID: 0}

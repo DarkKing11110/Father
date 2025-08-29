@@ -38,6 +38,9 @@ namespace Art_Equilibrium
         [Header("NavMesh Link")]
         public NavMeshLink navMeshLink;
 
+        [Header("Key System")]
+        public string requiredKeyID = ""; // Leer = keine Schlüsselabfrage
+
         private void Start()
         {
             defaultRot = transform.rotation;
@@ -81,6 +84,13 @@ namespace Art_Equilibrium
             doorMessage = trig ? (open ? closeMessage : openMessage) : "";
         }
 
+        private bool HasPlayerKey(Collider player)
+        {
+            var inventory = player.GetComponent<PlayerKeyInventory>();
+            return inventory != null && inventory.HasKey(requiredKeyID);
+        }
+
+
         private void OnGUI()
         {
             if (!string.IsNullOrEmpty(doorMessage))
@@ -111,8 +121,16 @@ namespace Art_Equilibrium
         {
             if (coll.CompareTag("Player"))
             {
-                doorMessage = open ? closeMessage : openMessage;
-                trig = true;
+                if (string.IsNullOrEmpty(requiredKeyID) || HasPlayerKey(coll))
+                {
+                    doorMessage = open ? closeMessage : openMessage;
+                    trig = true;
+                }
+                else
+                {
+                    doorMessage = "Tür ist verschlossen";
+                    trig = false;
+                }
             }
         }
 

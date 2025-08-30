@@ -164,12 +164,6 @@ public class EnemyBehaviour : MonoBehaviour
         animator.SetBool("isAttacking", true);
         animator.SetBool("isRunning", false);
         animator.SetBool("isWalking", false);
-
-        if (Time.time - lastAttackTime >= attackCooldown)
-        {
-            AttackPlayer();
-            lastAttackTime = Time.time;
-        }
     }
 
 
@@ -208,12 +202,40 @@ public class EnemyBehaviour : MonoBehaviour
     void AttackPlayer()
     {
         // Animation-Flags werden in HandleAttackingState gesetzt
-        PlayerBehaviour playerBehaviour = player.GetComponent<PlayerBehaviour>();
-        if (playerBehaviour != null)
+        // Schaden wird jetzt durch Animation Event ausgeführt!
+    }
+
+    public void DealDamageToPlayer()
+    {
+        Debug.Log("Schaden Event!");
+
+        PlayerBehaviour playerBehaviour = null;
+
+        if (player != null)
+        {
+            playerBehaviour = player.GetComponent<PlayerBehaviour>();
+            if (playerBehaviour == null)
+            {
+                playerBehaviour = player.GetComponentInChildren<PlayerBehaviour>();
+                if (playerBehaviour == null)
+                    playerBehaviour = player.GetComponentInParent<PlayerBehaviour>();
+            }
+        }
+
+        if (playerBehaviour != null && Time.time - lastAttackTime >= attackCooldown)
         {
             playerBehaviour.TakeDamage(attackDamage);
+            Debug.Log("Spieler erhält Schaden: " + attackDamage);
+            lastAttackTime = Time.time;
+        }
+        else if (playerBehaviour == null)
+        {
+            Debug.LogWarning("PlayerBehaviour-Script nicht gefunden!");
         }
     }
+
+
+
 
 
 

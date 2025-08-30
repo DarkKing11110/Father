@@ -3,13 +3,40 @@ using UnityEngine;
 public class Key : MonoBehaviour
 {
     public string keyID = "DoorA"; // Eindeutige ID für die Tür
+    public float viewRadius = 3f; // Radius, in dem der Schlüssel aufgenommen werden kann
+    public float viewAngle = 30f; // Maximaler Winkel zur Blickrichtung des Spielers
 
-    private bool playerInRange = false;
+    private bool playerCanPickUp = false;
     private Transform player;
+
+    void Start()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+            player = playerObj.transform;
+    }
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E) && PlayerIsLookingAtKey())
+        playerCanPickUp = false;
+
+        if (player != null)
+        {
+            Vector3 playerEyePos = player.position + Vector3.up * 0.91f; // Augenhöhe ggf. anpassen
+            float distance = Vector3.Distance(transform.position, playerEyePos);
+            if (distance <= viewRadius)
+            {
+                Vector3 toKey = (transform.position - playerEyePos).normalized;
+                Vector3 playerForward = player.forward;
+                float angle = Vector3.Angle(playerForward, toKey);
+                if (angle <= viewAngle)
+                {
+                    playerCanPickUp = true;
+                }
+            }
+        }
+
+        if (playerCanPickUp && Input.GetKeyDown(KeyCode.E))
         {
             PlayerKeyInventory inventory = player.GetComponent<PlayerKeyInventory>();
             if (inventory != null)
@@ -20,46 +47,20 @@ public class Key : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnGUI()
     {
-        if (other.CompareTag("Player"))
+        if (playerCanPickUp)
         {
-            playerInRange = true;
-            player = other.transform;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = false;
-            player = null;
-        }
-    }
-
-    private bool PlayerIsLookingAtKey()
-    {
-        if (player == null) return false;
-
-        // Raycast von Spieler-Kamera (oder Spieler-Position) zur Key-Position
-        Vector3 origin = player.position + Vector3.up * 1.7f; // Augenhöhe
-        Vector3 direction = (transform.position - origin).normalized;
-
-        // Optional: Passe den Sichtwinkel an
-        float maxAngle = 30f;
-        Vector3 playerForward = player.forward;
-        float angle = Vector3.Angle(playerForward, direction);
-
-        // Prüfe, ob der Schlüssel im Sichtfeld ist und kein Hindernis dazwischen
-        if (angle <= maxAngle)
-        {
-            Ray ray = new Ray(origin, direction);
-            if (Physics.Raycast(ray, out RaycastHit hit, 3f))
+            GUIStyle style = new GUIStyle(GUI.skin.label)
             {
-                return hit.transform == transform;
-            }
+                fontSize = 18,
+                alignment = TextAnchor.MiddleCenter
+            };
+            float width = 200;
+            float height = 40;
+            float x = (Screen.width - width) / 2;
+            float y = Screen.height * 0.8f;
+            GUI.Label(new Rect(x, y, width, height), "Drücke E um Schlüssel zu nehmen", style);
         }
-        return false;
     }
 }

@@ -43,6 +43,12 @@ public class GameManager : MonoBehaviour
         StartCoroutine(EnablePlayerControlNextFrame());
     }
 
+    public void QuitGame()
+    {
+        Debug.Log("Spiel wird beendet.");
+        Application.Quit();
+    }
+
     private System.Collections.IEnumerator EnablePlayerControlNextFrame()
     {
         // Warten bis die Szene geladen ist
@@ -86,35 +92,6 @@ public class GameManager : MonoBehaviour
             var behaviour = player.GetComponent<PlayerBehaviour>();
             if (behaviour != null)
                 behaviour.enabled = enable;
-        }
-    }
-
-    void OnGUI()
-    {
-        if (CurrentState == GameState.MainMenu)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-
-            float width = 200, height = 60;
-            float x = (Screen.width - width) / 2;
-            float y = Screen.height * 0.6f;
-            if (GUI.Button(new Rect(x, y, width, height), "Spiel starten"))
-            {
-                StartGame();
-            }
-        }
-        else if (showEndScreen)
-        {
-            GUIStyle style = new GUIStyle(GUI.skin.box)
-            {
-                fontSize = 32,
-                alignment = TextAnchor.MiddleCenter
-            };
-            float width = 400, height = 100;
-            float x = (Screen.width - width) / 2;
-            float y = Screen.height * 0.4f;
-            GUI.Box(new Rect(x, y, width, height), endMessage, style);
         }
     }
 }

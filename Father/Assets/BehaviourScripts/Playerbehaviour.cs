@@ -11,15 +11,14 @@ public class PlayerBehaviour : MonoBehaviour
     public float minPitch = -90f;            // Minimale Neigung nach unten
     public float moveSpeed = 5f; // Bewegungsgeschwindigkeit des Spielers
     //public float sideMoveSpeed = 3f; // Seitliche Bewegungsgeschwindigkeit des Spielers
-    public float jumpForce = 5f; // Sprungkraft des Spielers
     public float attackRange = 2f; // Angriffsreichweite des Spielers
     public int attackDamage = 10; // Angriffsschaden des Spielers
     public Transform cameraTransform; // Referenz zur Kamera
     public float CameraHeight = 1.7f; // Höhe der Kamera über dem Boden
     public bool isRunning = false; // Flag, ob der Spieler rennt
 
-    public int maxStamina = 100;
-    public int currentStamina;
+    public float maxStamina = 100;
+    public float currentStamina;
     public float staminaRegenRate = 15f; // Punkte pro Sekunde
     public float sprintMultiplier = 1.7f; // Sprint-Geschwindigkeit
     public float staminaDrainRate = 30f; // Punkte pro Sekunde beim Sprinten
@@ -69,7 +68,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         HandleSprint();
         Move();
-        Jump();
         Attack();
         HandleMouseLook();
         RegenerateStamina();
@@ -81,8 +79,8 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && canSprint)
         {
             isRunning = true;
-            currentStamina -= Mathf.RoundToInt(staminaDrainRate * Time.deltaTime);
-            if (currentStamina < 0) currentStamina = 0;
+            currentStamina -= staminaDrainRate * Time.deltaTime;
+            currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
         }
         else
         {
@@ -94,10 +92,11 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (!isRunning && currentStamina < maxStamina)
         {
-            currentStamina += Mathf.RoundToInt(staminaRegenRate * Time.deltaTime);
-            if (currentStamina > maxStamina) currentStamina = maxStamina;
+            currentStamina += staminaRegenRate * Time.deltaTime;
+            currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
         }
     }
+
 
     void HandleMouseLook()
     {
@@ -145,17 +144,6 @@ public class PlayerBehaviour : MonoBehaviour
         rb.MovePosition(transform.position + movement);
     }
 
-
-
-
-    void Jump()
-    {
-        if (isGrounded && Input.GetButtonDown("Jump"))
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
-    }
-
     void Attack()
     {
         if (Input.GetMouseButtonDown(1)) // Rechtsklick
@@ -180,22 +168,6 @@ public class PlayerBehaviour : MonoBehaviour
             Vector3 headOffset = new Vector3(0, CameraHeight, 0);
             cameraTransform.position = transform.position + headOffset;
             // Die Rotation wird in HandleMouseLook gesetzt
-        }
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
         }
     }
 
@@ -233,8 +205,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         GUI.color = Color.white;
         GUI.Box(new Rect(staminaX, staminaY, staminaBarWidth, staminaBarHeight), "");
-
-        float staminaPercent = Mathf.Clamp01((float)currentStamina / maxStamina);
+        float staminaPercent = Mathf.Clamp01(currentStamina / maxStamina);
         float staminaFillWidth = staminaBarWidth * staminaPercent;
         Color staminaFillColor = Color.Lerp(new Color(0.5f, 0.5f, 0.5f), new Color(0.1f, 0.6f, 0.1f), staminaPercent); // von grau zu dunklem grün
         staminaTexture.SetPixel(0, 0, staminaFillColor);
